@@ -65,8 +65,7 @@ const Header = ({ type }) => {
   const fetchDestinations = async () => {
     try {
       const response = await axiosInstance.get(`/packages/get/destinations`);
-      const data = await response.json();
-      setAvailableDestinations(data);
+      setAvailableDestinations(response.data);
       setLoad(false);
     } catch (error) {
       console.error('Error fetching destinations:', error);

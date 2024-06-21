@@ -37,16 +37,13 @@ const List = () => {
   };
 
   useEffect(() => {
-    console.log("Fetching destinations...");
     fetchDestinations();
   }, []);
   
   useEffect(() => {
-    console.log("Available destinations:", availableDestinations);
   }, [availableDestinations]);
   
   useEffect(() => {
-    console.log("Destination state:", destination);
   }, [destination]);
   
 
@@ -57,9 +54,8 @@ const List = () => {
   const fetchDestinations = async () => {
     try {
       const response = await axiosInstance.get(`/packages/get/destinations`);
-      const data = await response.json();
-      console.log("Fetched destinations:", data);
-      setAvailableDestinations(data);
+      console.log("Fetched destinations:", response.data);
+      setAvailableDestinations(response.data);
       setLoad(false);
     } catch (error) {
       console.error('Error fetching destinations:', error);

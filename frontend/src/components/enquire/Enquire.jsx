@@ -51,7 +51,7 @@ const EnquireForm = ({ user, data, days, options, dates, setOpen }) => {
     try {
       const response = await axiosInstance.post("/enquiry/create", enquiryData);
 
-      if (response.ok) {
+      if (response.status === 201) {
         console.log("Enquiry submitted successfully!");
         setOpen(false);
         toast.success("Enquiry submitted successfully!"); 
